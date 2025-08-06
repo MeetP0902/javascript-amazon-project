@@ -77,6 +77,6 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
       cartQuantity += item.quantity
     })
 
-    document.querySelector('.cart-quantity').innerHTML = cartQuantity
+    document.querySelector('.cart-quantity').innerHTML = cartQuantity 
   })
 })

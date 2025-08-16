@@ -40,3 +40,14 @@ export function removeFromCart(productId){
   cart = newArr 
   saveToStorage()
 }
+
+
+export function updateDeliveryOption(productID,deliveryOptionID){
+  let matching
+  cart.forEach((item) => {
+    if(productID == item.id)
+      matching = item
+  })
+  matching.deliveryOptionID = deliveryOptionID
+  saveToStorage()
+}

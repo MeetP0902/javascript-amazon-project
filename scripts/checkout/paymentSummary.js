@@ -10,7 +10,7 @@ export function renderPaymentSummary(){
    
   cart.forEach((cartItem)=>{
     const product = getProduct(cartItem.id)
-    const deliveryOption = getDeliveryOption(cartItem.deliveryOptionID)
+    const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId)
     productPriceCents += product.priceCents * cartItem.quantity
     shippingPriceCents += deliveryOption.priceCents
   })
@@ -58,10 +58,10 @@ export function renderPaymentSummary(){
 
   document.querySelector('.js-place-order-button').addEventListener('click',async ()=>{
     try{
-      const apiCart = cart.map(({ id, quantity, deliveryOptionID }) => ({
+      const apiCart = cart.map(({ id, quantity, deliveryOptionId }) => ({
         productId: id,
         quantity,
-        deliveryOptionId: deliveryOptionID
+        deliveryOptionId: deliveryOptionId
       }));
     
       const response = await fetch('https://supersimplebackend.dev/orders',{

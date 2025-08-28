@@ -16,9 +16,9 @@ export function renderOrderSummary(){
       const productId = cartItem.id
 
       let matchingProduct = getProduct(productId )
-      const deliveryOptionId = cartItem.deliveryOptionId
+      const deliveryOptionID = cartItem.deliveryOptionID
 
-      let deliveryOption = getDeliveryOption(deliveryOptionId)
+      let deliveryOption = getDeliveryOption(deliveryOptionID)
       const today = dayjs()
       const deliveryDate = today.add(
         deliveryOption.deliveryDays,
@@ -79,7 +79,7 @@ export function renderOrderSummary(){
       const priceString = deliveryOptions.priceCents === 0 
       ?'Free' 
       :`$${formatCurrency(deliveryOptions.priceCents)} - `
-      const isChecked = deliveryOptions.id === cartItem.deliveryOptionId
+      const isChecked = deliveryOptions.id === cartItem.deliveryOptionID
       html += `
       <div class="delivery-option js-delivery-option"
       data-product-id = "${matchingProduct.id}" 

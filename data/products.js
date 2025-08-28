@@ -1,17 +1,15 @@
 import {formatCurrency} from '../scripts/utils/money.js'
 
-let productIndex = new Map();
-
 export function getProduct(productId){
-  return productIndex.get(productId);
+  let matchingProduct;
+  products.forEach((product)=>{
+    if(product.id === productId){
+      matchingProduct = product
+    }
+  })
+  return matchingProduct
 }
 
-
-function rebuildProductIndex(){
-  try {
-    productIndex = new Map(products.map(p => [p.id, p]))
-  } catch (e) { /* ignore until products exist */ }
-}
 
 class Product{
   id;
@@ -64,10 +62,10 @@ class Clothing extends Product{
 
 export let products = []
 
-import { fetchWithTimeout } from '../scripts/utils/fetchWithTimeout.js'
-
 export function loadProductsFetch(){
-  const promoise = fetchWithTimeout('https://supersimplebackend.dev/products', { timeout: 10000 }).then((response)=>{
+  const promoise = fetch(
+    'https://supersimplebackend.dev/products'
+    ).then((response)=>{
     return response.json()
   }).then((productData)=>{
     products = productData.map((productDetails)=>{

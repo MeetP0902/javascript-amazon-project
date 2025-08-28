@@ -6,11 +6,11 @@ export function loadFromStorage(){
   cart = JSON.parse(localStorage.getItem('cart'))||[{
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     quantity:2,
-    deliveryOptionId:'1'
+    deliveryOptionID:'1'
   },{
     id: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
     quantity: 1,
-    deliveryOptionId:'2'
+    deliveryOptionID:'2'
   }]
 }
 
@@ -30,7 +30,7 @@ export function addToCart(productID){
     cart.push({
       id:productID,
       quantity: 1,
-      deliveryOptionId:'1'
+      deliveryOptionID:'1'
    })
   }
   saveToStorage()
@@ -48,28 +48,24 @@ export function removeFromCart(productId){
 }
 
 
-export function updateDeliveryOption(productID,deliveryOptionId){
+export function updateDeliveryOption(productID,deliveryOptionID){
   let matching
   cart.forEach((item) => {
     if(productID == item.id)
       matching = item
   })
-  matching.deliveryOptionId = deliveryOptionId
+  matching.deliveryOptionID = deliveryOptionID
   saveToStorage()
 }
 
 export function loadCart(fun){
-  fetch('https://supersimplebackend.dev/cart')
-    .then(res => {
-      if(!res.ok) throw new Error('Network response was not ok')
-      return res.json()
-    })
-    .then(data => {
-      console.log(data)
-      fun && fun()
-    })
-    .catch(err => {
-      console.error('Failed to load cart', err)
-      fun && fun() // still call to avoid blocking UI/tests
-    })
+  const xhr = new XMLHttpRequest
+  xhr.addEventListener('load',()=>{
+    
+    
+    console.log(xhr.response)
+    fun();
+  })
+  xhr.open('GET', 'https://supersimplebackend.dev/cart' )
+  xhr.send()
 }

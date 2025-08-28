@@ -23,11 +23,11 @@ describe("test suite: renderOrderSummary",()=>{
       return JSON.stringify([{
         id:productId1,
         quantity:2,
-        deliveryOptionId:'1'
+        deliveryOptionID:'1'
       },{
         id:productId2,
         quantity: 1,
-        deliveryOptionId:'2'
+        deliveryOptionID:'2'
       }])
     })
     loadFromStorage()

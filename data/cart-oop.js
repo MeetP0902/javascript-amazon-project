@@ -5,11 +5,11 @@ function Cart(localStorageKey){
       this.cartItems = JSON.parse(localStorage.getItem(localStorageKey))||[{
         id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
         quantity:2,
-        deliveryOptionId:'1'
+        deliveryOptionID:'1'
       },{
         id: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
         quantity: 1,
-        deliveryOptionId:'2'
+        deliveryOptionID:'2'
       }]
     },
     saveToStorage(){
@@ -27,7 +27,7 @@ function Cart(localStorageKey){
         this.cartItems.push({
           id:productID,
           quantity: 1,
-          deliveryOptionId:'1'
+          deliveryOptionID:'1'
       })
       }
       this.saveToStorage()
@@ -43,13 +43,13 @@ function Cart(localStorageKey){
       this.saveToStorage()
     },
 
-    updateDeliveryOption(productID,deliveryOptionId){
+    updateDeliveryOption(productID,deliveryOptionID){
       let matching
       this.cartItems.forEach((item) => {
         if(productID == item.id)
           matching = item
       })
-      matching.deliveryOptionId = deliveryOptionId
+      matching.deliveryOptionID = deliveryOptionID
       this.saveToStorage()
     }
   }

@@ -12,11 +12,11 @@ export const deliveryOptions = [{
   priceCents:999
 }]
 
-export function getDeliveryOption(deliveryOptionId){
+export function getDeliveryOption(deliveryOptionID){
   let deliveryOption
 
   deliveryOptions.forEach((option)=>{
-    if(option.id === deliveryOptionId){
+    if(option.id === deliveryOptionID){
       deliveryOption = option
     }
   })

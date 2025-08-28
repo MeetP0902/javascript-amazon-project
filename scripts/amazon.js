@@ -1,11 +1,8 @@
 import { cart, addToCart } from "../data/cart.js";
-import { products, loadProductsFetch } from "../data/products.js";
+import { products, loadProducts } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
-loadProductsFetch().then(renderProductsGrid).catch(err => {
-  console.error('Failed to load products', err)
-  document.querySelector('.products-grid')?.insertAdjacentHTML('beforebegin', '<p class="error">Failed to load products. Please try again.</p>')
-})
+loadProducts(renderProductsGrid)
 
 function renderProductsGrid(){
 
